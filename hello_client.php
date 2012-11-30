@@ -1,8 +1,9 @@
 <?php
 try{
-  $sClient = new SoapClient('http://localhost/pay/hi.wsdl');
+	$sClient = new SoapClient('https://payserver/pay/hi.wsdl', array('local_cert'=>'client.pem'));
+	//$sClient = new SoapClient('https://payserver/pay/hi.wsdl');
   
-  $params = "Aqila";
+  $params = "phil";
   $response = $sClient->doHello($params);
   
   var_dump($response);

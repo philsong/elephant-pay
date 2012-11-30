@@ -119,14 +119,28 @@ foreach($trxnResult as $key=>$value){
 		if(strcmp($value, "028")==0)
 		{
 			try{
-			  $sClient = new SoapClient('http://localhost/pay/hi.wsdl');
+				//here need remote call
+			  $sClient = new SoapClient('https://192.168.7.19/pay/hi.wsdl', array('local_cert'=>'client.pem'));
 			  
 			  $params = "tti001";
 			  $response = $sClient->doHello($params);
 			  
 			  var_dump($response);
 			  
-			  
+				// The message
+				$message = "Line 1\nLine 2\nLine 3";
+
+				// In case any of our lines are larger than 70 characters, we should use wordwrap()
+				$message = wordwrap($message, 70);
+
+				// Send
+			
+					$ret = mail('78623269@qq.com', 'My Subject', $message);
+					var_dump($ret);
+					echo $ret;
+
+				mail('philsong@techtrex.com', 'My Subject', $message);
+
 			} catch(SoapFault $e){
 			  var_dump($e);
 			}

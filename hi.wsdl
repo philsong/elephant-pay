@@ -37,7 +37,7 @@
   
   <service name="HelloService">
     <port name="HelloPort" binding="tns:HelloBinding">
-	  <soap:address location="http://localhost/pay/hello_server.php" />
+	  <soap:address location="https://localhost/pay/hello_server.php" />
 	</port>
   </service>
     
